@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		235C572B259FE7680039F540 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235C572A259FE7680039F540 /* MockAPI.swift */; };
 		23D64080259D182C0044513A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D6407F259D182C0044513A /* AppDelegate.swift */; };
 		23D64082259D182C0044513A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D64081259D182C0044513A /* SceneDelegate.swift */; };
 		23D64084259D182C0044513A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D64083259D182C0044513A /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		235C572A259FE7680039F540 /* MockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
 		23D6407C259D182C0044513A /* InfiniteScrollDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfiniteScrollDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23D6407F259D182C0044513A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23D64081259D182C0044513A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				23D6407F259D182C0044513A /* AppDelegate.swift */,
 				23D64081259D182C0044513A /* SceneDelegate.swift */,
 				23D64083259D182C0044513A /* ViewController.swift */,
+				235C572A259FE7680039F540 /* MockAPI.swift */,
 				23D64096259D24AF0044513A /* FancyButton.swift */,
 				23D64099259D2BCB0044513A /* TableViewController.swift */,
 				23D6409C259D2BD70044513A /* CollectionViewController.swift */,
@@ -149,6 +152,7 @@
 				23D6409D259D2BD70044513A /* CollectionViewController.swift in Sources */,
 				23D64084259D182C0044513A /* ViewController.swift in Sources */,
 				23D64097259D24AF0044513A /* FancyButton.swift in Sources */,
+				235C572B259FE7680039F540 /* MockAPI.swift in Sources */,
 				23D64080259D182C0044513A /* AppDelegate.swift in Sources */,
 				23D6409A259D2BCB0044513A /* TableViewController.swift in Sources */,
 				23D64082259D182C0044513A /* SceneDelegate.swift in Sources */,

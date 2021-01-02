@@ -10,8 +10,11 @@ import UIKit
 struct Constants {
     static let title = "Infinite Scroll Demo"
     static let directions = "Select a view type to begin..."
+    static let backButtonLabel = "Back"
     static let tv = "UITableView"
     static let cv = "UICollectionView"
+    static let tvCell = "tableCell"
+    static let cvCell = "collectionCell"
 }
 
 class ViewController: UIViewController {
@@ -24,7 +27,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = Constants.title
+        tableView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.tvCell)
         
         configureLabel()
         configureStack()
@@ -64,7 +69,7 @@ class ViewController: UIViewController {
         stack.spacing = 20
         
         NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            stack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
             stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             stack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
@@ -72,7 +77,7 @@ class ViewController: UIViewController {
     }
     
     func configureButtons() {
-        let buttonLabels: [String: UIColor] = [Constants.tv: UIColor.systemTeal, Constants.cv: UIColor.systemIndigo]
+        let buttonLabels: [String: UIColor] = [Constants.tv: UIColor.systemBlue, Constants.cv: UIColor.systemRed]
         
         for label in buttonLabels {
             let btn = FancyButton()
@@ -88,11 +93,16 @@ class ViewController: UIViewController {
     }
     
     @objc func presentVC(_ sender: UIButton) {
+        let backItem = UIBarButtonItem()
+        
+        backItem.title = Constants.backButtonLabel
+        navigationItem.backBarButtonItem = backItem
+        
         switch sender.title(for: .normal) {
             case Constants.cv:
-                present(collectionView, animated: true)
+                navigationController?.pushViewController(collectionView, animated: true)
             case Constants.tv:
-                present(tableView, animated: true)
+                navigationController?.pushViewController(tableView, animated: true)
             default:
                 break
         }
