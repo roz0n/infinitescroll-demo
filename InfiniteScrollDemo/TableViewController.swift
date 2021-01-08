@@ -58,7 +58,7 @@ extension TableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.tvCell, for: indexPath)
-        cell.textLabel?.text = data[indexPath.row]
+        cell.textLabel?.text = String(indexPath.row)
         return cell
     }
     

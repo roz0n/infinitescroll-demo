@@ -16,74 +16,8 @@ class MockAPI {
         if paginating == true { self.isLoadingResults.toggle() }
         
         DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
-            let originalData = [
-                "Jordan",
-                "Pippen",
-                "Rodman",
-                "Kukoc",
-                "Jordan",
-                "Pippen",
-                "Rodman",
-                "Kukoc",
-                "Jordan",
-                "Pippen",
-                "Rodman",
-                "Kukoc",
-                "Jordan",
-                "Pippen",
-                "Rodman",
-                "Kukoc",
-                "Jordan",
-                "Pippen",
-                "Rodman",
-                "Kukoc",
-                "Jordan",
-                "Pippen",
-                "Rodman",
-                "Kukoc",
-                "Jordan",
-                "Pippen",
-                "Rodman",
-                "Kukoc",
-                "Jordan",
-                "Pippen",
-                "Rodman",
-                "Kukoc",
-                "Jordan",
-                "Pippen",
-                "Rodman",
-                "Kukoc"
-            ]
-            let newData = [
-                "Ewing",
-                "Starks",
-                "Mason",
-                "Oakley",
-                "Ewing",
-                "Starks",
-                "Mason",
-                "Oakley",
-                "Ewing",
-                "Starks",
-                "Mason",
-                "Oakley",
-                "Ewing",
-                "Starks",
-                "Mason",
-                "Oakley",
-                "Ewing",
-                "Starks",
-                "Mason",
-                "Oakley",
-                "Ewing",
-                "Starks",
-                "Mason",
-                "Oakley",
-                "Ewing",
-                "Starks",
-                "Mason",
-                "Oakley"
-            ]
+            let originalData = Array.init(repeating: "", count: 50)
+            let newData = Array.init(repeating: "", count: 35)
             
             completion(.success(paginating ? newData : originalData))
             
