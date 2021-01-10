@@ -44,7 +44,9 @@ class ViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.size.width
         
-        layout.estimatedItemSize = CGSize(width: ((width / 2) - 10), height: 100)
+        layout.estimatedItemSize = CGSize(width: ((width / 2) - 20), height: 130)
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 0, right: 10)
+        
         return layout
     }()
     

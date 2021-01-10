@@ -13,7 +13,6 @@ class CollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColor = .systemTeal
         getData()
     }
     
@@ -52,22 +51,60 @@ extension CollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cvCell, for: indexPath)
         let textLabel = UITextView(frame: .zero);
         
-        textLabel.backgroundColor = .blue
+        textLabel.backgroundColor = .systemPurple
         textLabel.text = String(indexPath.row)
+        textLabel.font = UIFont.boldSystemFont(ofSize: 24)
+        textLabel.textAlignment = .center
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         
         cell.contentView.addSubview(textLabel)
+        cell.contentView.layer.cornerRadius = 6
+        cell.contentView.layer.masksToBounds = true
         
         NSLayoutConstraint.activate([
             textLabel.topAnchor.constraint(equalTo: cell.contentView.topAnchor),
             textLabel.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor),
             textLabel.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor),
-            textLabel.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor)
+            textLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor)
         ])
         
         cell.contentView.backgroundColor = .green
         
         return cell
+    }
+    
+}
+
+// MARK: - Scroll view delegate
+
+extension CollectionViewController {
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        let collectionViewHeight = collectionView.collectionViewLayout.collectionViewContentSize.height
+        let scrollViewFrameHeight = scrollView.frame.size.height
+        let calc = (collectionViewHeight - 250 - scrollViewFrameHeight)
+        
+        print("Position", position)
+//        print("Collection view height", collectionViewHeight)
+//        print("Scroll view frame height", scrollViewFrameHeight)
+        print("Calc", calc)
+        
+        if Int(position) > Int(calc) {
+            guard !MockAPI.shared.isLoadingResults else { return }
+            
+            MockAPI.shared.fetchData(paginating: true) { [weak self] (result) in
+                switch result {
+                    case .success(let responseData):
+                        self?.data.append(contentsOf: responseData)
+                        DispatchQueue.main.async { self?.collectionView.reloadData() }
+                        break
+                    case .failure(_):
+                        print("Error fetching paginated result")
+                        break
+                }
+            }
+        }
     }
     
 }
