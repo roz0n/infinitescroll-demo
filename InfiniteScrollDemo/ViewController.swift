@@ -23,18 +23,30 @@ class ViewController: UIViewController {
     var stack = UIStackView()
     
     var tableView = TableViewController()
-    var collectionView = CollectionViewController(collectionViewLayout: UICollectionViewLayout())
+//    var collectionView = CollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+    var collectionView: UICollectionViewController?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = Constants.title
         tableView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.tvCell)
+        
+        collectionView = CollectionViewController(collectionViewLayout: self.cvLayout)
+        collectionView!.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: Constants.cvCell)
         
         configureLabel()
         configureStack()
         configureButtons()
     }
+    
+    let cvLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        let width = UIScreen.main.bounds.size.width
+        
+        layout.estimatedItemSize = CGSize(width: ((width / 2) - 10), height: 100)
+        return layout
+    }()
     
     let titleLabel: UILabel = {
         let tl = UILabel()
@@ -100,7 +112,7 @@ class ViewController: UIViewController {
         
         switch sender.title(for: .normal) {
             case Constants.cv:
-                navigationController?.pushViewController(collectionView, animated: true)
+                navigationController?.pushViewController(collectionView!, animated: true)
             case Constants.tv:
                 navigationController?.pushViewController(tableView, animated: true)
             default:
